@@ -1,361 +1,156 @@
-import React from "react";
-import {
-  Expertise,
-  Navbar,
-  Subscription,
-  SubscriptionRA,
-  Wallet,
-  Webinar,
-  ErrorPage,
-  ExpertiseExplore,
-  SubscriptionBuy,
-  ReferEarn,
-  Blog,
-  BlogPage,
-  ContactUs,
-  Profile,
-  About,
-  FAQs,
-  PrivacyPolicy,
-  Terms,
-  SignUp,
-  Disclaimer,
-  Hero,
-} from "./components";
+import React, { useState, useEffect, useContext } from "react";
+import axios from "axios";
 import styles from "./style";
-import "react-toastify/dist/ReactToastify.css";
-import {
-  Route,
-  RouterProvider,
-  createBrowserRouter,
-  createRoutesFromElements,
-  Navigate,
-} from "react-router-dom";
-import { UserDataProvider } from "./constants/context";
-import { UserProvider } from "./constants/userContext";
-import { SubscriptionProvider } from "./constants/subscriptionContext";
-import KYCPopup from "./components/KYCPage";
-import MinorSub from "./components/MinorSubscription/MinorSub";
-// import WebinarExpert from "./components/Webinar/WebinarExpert";
-import SubscriptionMinorPopup from "./components/Subscription RA/SubscriptionMinorPopup";
-import LoginSignupPopup from "./components/LoginSignupPopup";
-import ChooseExpert from "./components/ChooseExpert/ChooseExpert";
-import PrivacyPolicy2 from "./components/About/PrivacyPolicy2";
+import Navbar from "./Navbar";
+import Sidebar from "./Sidebar";
+import { Routes, Route, useLocation, Navigate } from "react-router-dom";
+import { Dashboard, Subscription, Wallet, Setting } from "./components";
+import SignUp from "./components/SignUp";
+import ForgetPassword from "./components/ForgetPassword";
+import NewPassword from "./components/NewPassword";
+import ConfirmPassword from "./components/ConfirmPassword";
+import AnalysisBoard from "./components/AnalysisBoard";
+import Webinar from "./components/Webinar";
+import Chats from "./components/Chats";
+import ChatsHistory from "./components/ChatsHistory";
+import TelegramChannel from "./components/TelegramChannel";
+import StandardQues from "./components/StandardQues";
+import CallPost from "./components/CallPost/CallPost";
+import FeedPost from "./components/FeedPost/FeedPost";
+import { useAuth } from "./authContext";
+import ProtectedRoute from "./ProtectedRoute";
+import api from "./api";
+import SignalRCallMessage from "./components/SignalRCallMessage";
+import SignalRCallMessage2 from "./components/SignalRCallMessage2";
+import LiveFeature from "./components/CallPost/LiveFeature/LiveFeature";
 
 function App() {
-  const hasVisitedSignUp = sessionStorage.getItem("visitedSignUp");
-  const userId = localStorage.getItem("userId");
-  const token = localStorage.getItem("authToken");
+  const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth < 768);
+  const [activeTab, setActiveTab] = useState("dashboard");
+  const [showSidebar, setShowSidebar] = useState(!isSmallScreen);
+  const [telegramData, setTelegramData] = useState([]);
+  const location = useLocation();
+  const signUp = sessionStorage.getItem('visitedSignUp');
+  const isSignUpPage = location.pathname === "/signup";
+  const isResetPage = location.pathname === "/reset";
+  const isNewPasswordPage = location.pathname === "/forget";
+  const isConfirmPasswordPage = location.pathname === "/set-new-password";
+  const { authState } = useAuth();
+  const stackholderId = authState.stackholderId;
+  const token = authState.token;
 
-  const router = createBrowserRouter(
-    createRoutesFromElements(
-      <>
-        <Route
-          path="/"
-          element={
-            <UserProvider>
-              <Navbar userId={userId} />
-            </UserProvider>
-          }
-          errorElement={<ErrorPage />}
-        >
-          <Route
-            path=""
-            element={
-              <div className={`${styles.flexStart}`}>
-                <UserDataProvider>
-                  <div className={`${styles.boxWidth}`}>
-                    <SubscriptionProvider>
-                      <Hero
-                        hasVisitedSignUp={hasVisitedSignUp}
-                        userId={userId}
-                        token={token}
-                      />
-                    </SubscriptionProvider>
-                  </div>
-                </UserDataProvider>
-              </div>
-            }
-          />
-          <Route
-            path="expertise"
-            element={
-              userId ? (
-                <div className={`${styles.flexStart}`}>
-                  <UserDataProvider>
-                    <div className={`${styles.boxWidth}`}>
-                      <Expertise userId={userId} />
-                    </div>
-                  </UserDataProvider>
-                </div>
-              ) : (
-                <Navigate to="/signup" replace={true} />
-              )
-            }
-          />
-          <Route
-            path="kycpage"
-            element={
-              // userId ? (
-              <div className={`${styles.flexStart}`}>
-                <UserDataProvider>
-                  <div className={`${styles.boxWidth}`}>
-                    <KYCPopup userId={userId} token={token} />
-                  </div>
-                </UserDataProvider>
-              </div>
-              // ) : (
-              //   <Navigate to="/signup" replace={true} />
-              // )
-            }
-          />
-          <Route
-            path="subscription"
-            element={
-              userId ? (
-                <div className={`${styles.flexStart}`}>
-                  <UserDataProvider>
-                    <div className={`${styles.boxWidth}`}>
-                      <Subscription userId={userId} />
-                    </div>
-                  </UserDataProvider>
-                </div>
-              ) : (
-                <Navigate to="/signup" replace={true} />
-              )
-            }
-          />
-          <Route
-            path="blogs"
-            element={
-              userId || hasVisitedSignUp ? (
-                <div className={`${styles.flexStart}`}>
-                  <div className={`${styles.boxWidth}`}>
-                    <Blog />
-                  </div>
-                </div>
-              ) : (
-                <Navigate to="/signup" replace={true} />
-              )
-            }
-          />
-          <Route
-            path="webinar"
-            element={
-              userId || hasVisitedSignUp ? (
-                <UserDataProvider>
-                  <Webinar />
-                </UserDataProvider>
-              ) : (
-                <Navigate to="/signup" replace={true} />
-              )
-            }
-          />
-          {/* <Route
-            path="/webinar/expert/:id"
-            element={
-              <UserDataProvider>
-                <WebinarExpert userId={userId} />
-              </UserDataProvider>
-            }
-          /> */}
-          <Route
-            path="history"
-            element={
-              userId ? (
-                <UserDataProvider>
-                  <SubscriptionProvider>
-                    <Wallet userId={userId} token={token} />
-                  </SubscriptionProvider>
-                </UserDataProvider>
-              ) : (
-                <Navigate to="/signup" replace={true} />
-              )
-            }
-          />
-          <Route
-            path="ra-detail2/:id"
-            element={
-              <UserProvider>
-                <MinorSub userId={userId} />
-              </UserProvider>
-            }
-          />
-          <Route
-            path="ra-detail/:id"
-            element={
-              <UserProvider>
-                <SubscriptionRA userId={userId} token={token} />
-              </UserProvider>
-            }
-          />
-          {/* <Route
-            path="subscription/buy"
-            element={
-              userId || hasVisitedSignUp ? (
-                <SubscriptionBuy />
-              ) : (
-                <Navigate to="/signup" replace={true} />
-              )
-            }
-          /> */}
-          {/* <Route
-            path="expertise/explore-expertise"
-            element={
-              userId || hasVisitedSignUp ? (
-                <UserDataProvider>
-                  <ExpertiseExplore userId={userId} />
-                </UserDataProvider>
-              ) : (
-                <Navigate to="/signup" replace={true} />
-              )
-            }
-          /> */}
-          <Route path="subscription/buy/:id" element={<SubscriptionBuy />} />
-          <Route
-            path="refer&earn"
-            element={
-              userId || hasVisitedSignUp ? (
-                <div className={`${styles.flexStart}`}>
-                  <div className={`${styles.boxWidth}`}>
-                    <ReferEarn />
-                  </div>
-                </div>
-              ) : (
-                <Navigate to="/signup" replace={true} />
-              )
-            }
-          />
-          <Route
-            path="about"
-            element={
-              userId || hasVisitedSignUp ? (
-                <About />
-              ) : (
-                <Navigate to="/signup" replace={true} />
-              )
-            }
-          />
-          <Route
-            path="faqs"
-            element={
-              userId || hasVisitedSignUp ? (
-                <FAQs />
-              ) : (
-                <Navigate to="/signup" replace={true} />
-              )
-            }
-          />
-          <Route
-            path="privacy"
-            element={
-              userId || hasVisitedSignUp ? (
-                <PrivacyPolicy2 />
-              ) : (
-                <Navigate to="/signup" replace={true} />
-              )
-            }
-          />
-          <Route
-            path="terms_of_service"
-            element={
-              userId || hasVisitedSignUp ? (
-                <Terms />
-              ) : (
-                <Navigate to="/signup" replace={true} />
-              )
-            }
-          />
-          <Route
-            path="profile"
-            element={
-              userId ? (
-                <UserProvider>
-                  <Profile userId={userId} token={token} />
-                </UserProvider>
-              ) : (
-                <Navigate to="/signup" replace={true} />
-              )
-            }
-          />
-          <Route
-  path="choose-your-expert"
-  element={
-    <UserDataProvider>
-      <ChooseExpert />
-    </UserDataProvider>
-  }
-/>
-<Route
-  path="choose-expert/:expertId"
-  element={
-    <UserDataProvider>
-      <ChooseExpert />
-    </UserDataProvider>
-  }
-/>
+  const toggleSidebar = () => {
+    setShowSidebar(!showSidebar);
+  };
 
+  useEffect(() => {
+    const handleResize = () => {
+      setIsSmallScreen(window.innerWidth < 768);
+      if (window.innerWidth < 768) {
+        setShowSidebar(false);
+      } else {
+        setShowSidebar(true);
+      }
+    };
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
-          <Route
-            path="blogs"
-            element={
-              userId || hasVisitedSignUp ? (
-                <Blog />
-              ) : (
-                <Navigate to="/signup" replace={true} />
-              )
-            }
-          />
-          <Route
-            path="contact_us"
-            element={
-              userId || hasVisitedSignUp ? (
-                <ContactUs />
-              ) : (
-                <Navigate to="/signup" replace={true} />
-              )
-            }
-          />
-          <Route
-            path="disclaimer"
-            element={
-              userId || hasVisitedSignUp ? (
-                <Disclaimer />
-              ) : (
-                <Navigate to="/signup" replace={true} />
-              )
-            }
-          />
-          <Route
-            path="/blogs/:blogId"
-            element={
-              userId || hasVisitedSignUp ? (
-                <BlogPage />
-              ) : (
-                <Navigate to="/signup" replace={true} />
-              )
-            }
-          />
-          <Route
-            path="/:subscriptionIdParams"
-            element={
-              userId ? (
-                <SubscriptionMinorPopup shouldNavigate={true} />
-              ) : (
-                <Navigate to="/signup" replace={true} />
-              )
-            }
-          />
-          <Route path="/signup" element={<SignUp />} />
-          <Route path="/login" element={<LoginSignupPopup token={token} />} />
-        </Route>
-      </>
-    )
-  );
+  useEffect(() => {
+    if (authState.isAuthenticated) {
+      const stackholderId = authState.stackholderId;
+      const TELEGRAM_CHAT_API = `/TelegramMessage/${stackholderId}?userType=RA&page=1&pageSize=100000`;
+
+      api.get(TELEGRAM_CHAT_API)
+        .then(response => {
+          setTelegramData(response.data.data);
+        })
+        .catch(error => {
+          console.error("Error fetching the data", error);
+        });
+    }
+  }, [authState]);
 
   return (
-    <div className="bg-[#ededed] w-full overflow-hidden font-poppins">
-      <RouterProvider router={router} />
+    <div className={`bg-gradient overflow-hidden`}>
+      <div className="flex">
+        <div className="flex-grow">
+          <>
+            {!isSignUpPage && !isResetPage && !isNewPasswordPage && !isConfirmPasswordPage && (
+              <Navbar activeTab={activeTab} toggleSidebar={toggleSidebar} />
+            )}
+            {!isSignUpPage && !isResetPage && !isNewPasswordPage && !isConfirmPasswordPage && showSidebar && (
+              <Sidebar
+                activeTab={activeTab}
+                setActiveTab={setActiveTab}
+                setShowSidebar={setShowSidebar}
+                telegramData={telegramData}
+              />
+            )}
+            <Routes>
+  <Route
+    path="/"
+    element={<ProtectedRoute element={<Dashboard token={token} stackholderId={stackholderId} />} />}
+  />
+  <Route
+    path="/analysis_board"
+    element={<ProtectedRoute element={<AnalysisBoard token={token} stackholderId={stackholderId} />} />}
+  />
+  <Route
+    path="/Live-Feature"
+    element={<ProtectedRoute element={<LiveFeature token={token} stackholderId={stackholderId} />} />}
+  />
+  <Route
+    path="/call_post"
+    element={<ProtectedRoute element={<CallPost token={token} stackholderId={stackholderId} />} />}
+  />
+  <Route
+    path="/feed_post"
+    element={<ProtectedRoute element={<FeedPost token={token} stackholderId={stackholderId} />} />}
+  />
+  <Route
+    path="/subscription"
+    element={<ProtectedRoute element={<Subscription token={token} stackholderId={stackholderId} />} />}
+  />
+  <Route
+    path="/wallet"
+    element={<ProtectedRoute element={<Wallet token={token} stackholderId={stackholderId} />} />}
+  />
+  <Route
+    path="/chats"
+    element={<ProtectedRoute element={<Chats token={token} stackholderId={stackholderId} />} />}
+  />
+  {/* {telegramData.length > 0 && (
+    <Route
+      path="/telegram_channel"
+      element={<ProtectedRoute element={<TelegramChannel token={token} stackholderId={stackholderId} />} />}
+    />
+  )} */}
+  <Route
+    path="/standard_questions"
+    element={<ProtectedRoute element={<StandardQues token={token} stackholderId={stackholderId} />} />}
+  />
+  <Route
+    path="/setting"
+    element={<ProtectedRoute element={<Setting token={token} stackholderId={stackholderId} />} />}
+  />
+
+  {/* Public Routes */}
+  <Route
+    path="/signup"
+    element={<SignUp setIsSignedUp={() => sessionStorage.setItem('visitedSignUp', 'true')} />}
+  />
+  <Route path="/chat" element={<SignalRCallMessage token={token} stackholderId={stackholderId} />} />
+  <Route path="/chatPremium" element={<SignalRCallMessage2 token={token} stackholderId={stackholderId} />} />
+  <Route path="/reset" element={<ForgetPassword token={token} stackholderId={stackholderId} />} />
+  <Route path="/forget" element={<NewPassword token={token} stackholderId={stackholderId} />} />
+  <Route path="/set-new-password" element={<ConfirmPassword token={token} stackholderId={stackholderId} />} />
+</Routes>
+          </>
+        </div>
+      </div>
     </div>
   );
 }
