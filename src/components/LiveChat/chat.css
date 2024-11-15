@@ -1,0 +1,44 @@
+
+  
+  .image-container {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    background: linear-gradient(149.81deg, #59A8FF 12.28%, #05B147 90.33%);
+    border-radius: 50%;
+    padding: 3px; /* Border width */
+  }
+  
+  .expert-image {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    background-color: #fff; /* Inner background color */
+  }
+  
+  /* Responsive Styles */
+  @media (max-width: 768px) {
+    .image-container {
+      width: 80px;
+      height: 80px;
+    }
+  
+    .expert-image {
+      width: 80px;
+      height: 80px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .image-container {
+      width: 87px;
+      height: 87px;
+    }
+  
+    .expert-image {
+      width: 80px;
+      height: 80px;
+    }
+  }
+  

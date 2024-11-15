@@ -1,0 +1,178 @@
+
+.section {
+    color: var(--gradient-bar);
+    margin-bottom: 1rem;
+  }
+  
+  .expert-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    /* gap: 40px; */
+  }
+  
+  .background-wrapper {
+    position: relative;
+  }
+  
+  .background-image {
+    width: 100%;
+    max-height: 200px;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1; 
+  }
+  
+  .profile-image_1 {
+    width: 100%;
+    max-height: 200px;
+    object-fit:contain;
+    position: relative;
+    z-index: 2;
+    mask-image: linear-gradient(rgba(0, 0, 0, 1) 70%, transparent);
+  }
+  
+  .dark-overlay {
+    position: relative;
+  }
+  
+  .dark-overlay::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 50%;
+    background: linear-gradient(to top, rgba(6, 3, 14), rgba(0, 0, 0, 0));
+    pointer-events: none;
+    z-index: 3;
+  }
+
+  .profile-div {
+    transition: background-color 0.3s ease-in-out; 
+  }
+  
+  .profile-div:hover {
+    background-color: #18181B;
+  }
+  .info {
+    padding: 0 1.5rem 1rem;
+  }
+  
+  .name-rating {
+    justify-content: space-between;
+    display: flex;
+  }
+  
+  .name-role {
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .name-role h3 {
+    margin: 0;
+    font-size: 1.3rem;
+  }
+  
+  .name-role p {
+    margin-top: 3px;
+    font-size: 0.8rem;
+    color: #C6CDD5;
+  }
+  
+  .experience-followers {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 0rem;
+    position: relative;
+    text-align: center;
+  }
+  
+  .experience-followers span{
+    font-weight:lighter;
+    color: #C6CDD5;
+  }
+  
+  .experience-followers::before {
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 1.5px;
+    background-color: #fff;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  .prize-subscription {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1.5rem;
+    align-items: center;
+  }
+  
+  
+  .prize {
+    font-size: 1.2rem;
+  }
+  
+  .prize span{
+    font-size: 2rem;
+  }
+
+  @media (max-width: 1060px) {
+    .expert-grid {
+      gap: 14px;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      margin-top: 2rem;
+    }
+
+    /* .profile-image {
+      width: 210px;
+      height: 112px;
+    } */
+
+    .info {
+      padding: 10px 0.5rem;
+    }
+
+    .name-role h3 {
+      font-size: 10px;
+      line-height: 10px;
+    }
+
+    .name-role p {
+      font-size: 10px;
+    }
+
+    .name-rating {
+      font-size: 10px;
+    }
+
+    .experience-followers span {
+      font-size: 8px;
+    }
+
+    .experience, .followers {
+      font-size: 8px;
+    }
+
+    .description {
+      font-size: 8px;
+    }
+
+    button {
+      font-size: 8px;
+      border: 1px;
+    }
+
+    .telegram {
+      width: 14px;
+      height: 14px;
+    }
+
+    .prize-subscription {
+      margin-top: 0.5rem;
+    }
+  }

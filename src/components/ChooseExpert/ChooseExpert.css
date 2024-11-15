@@ -1,0 +1,33 @@
+.btn {
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: white;
+    box-shadow: 0 0 20px #eee;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-position: right center; /* change the direction of the change here */
+}
+
+.btn-3 {
+    background-image: linear-gradient(to right, #9C27B0 0%, #2196F3 51%, #9C27B0 100%);
+    background-size: 200% auto;
+    transition: 0.5s;
+    color: white;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    border: none;
+    animation: gradientMove 3s ease infinite; /* Infinite animation for looping effect */
+}
+
+@keyframes gradientMove {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}

@@ -1,0 +1,7 @@
+.courseCard > div:nth-child(4) {
+  width: calc((100% / 5) * 3);
+}
+
+.courseCard > div:nth-child(5) {
+  width: calc((100% / 5) * 2);
+}
