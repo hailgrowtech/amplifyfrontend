@@ -1,0 +1,394 @@
+/* Add this to your Dashboard.css file */
+  
+  .dashboard-header {
+    background-color: #ffffff; /* White background */
+    border-bottom: 1px solid #e5e5e5; /* Light border at the bottom */
+    padding: 1.5rem 1rem; /* Add padding to the header */
+  }
+  
+  .dashboard-header h1 {
+    color: #1a202c;
+    font-size: 1.5rem;
+  }
+  
+  .search-bar {
+    position: relative;
+    border: 1px solid rgba(245, 245, 247, 1);
+    margin-bottom: 1rem;
+  }
+  
+  .search-bar input {
+    outline: none;
+    padding: 0.75rem 1.5rem;
+    width: calc(100% - 3rem);
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    color: #4a5568; /* Adjust text color as needed */
+  }
+  
+  .search-bar input::placeholder {
+    color: #a0aec0; /* Placeholder text color */
+  }
+  
+  .search-bar .search-icon {
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #a0aec0; /* Search icon color */
+    cursor: pointer;
+  }
+  
+  .search-icon {
+    color: rgba(142, 146, 188, 1);
+  }
+  
+  .search-bar .search-icon:hover {
+    color: #4a5568; /* Adjust color on hover */
+  }
+  
+  .bell-icon {
+    display: flex;
+    align-items: center; /* Align bell icon and profile image vertically */
+    justify-content: center; /* Center bell icon horizontally */
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    border: 2px solid rgba(245, 245, 247, 1);
+    padding: 10px;
+    font-size: larger;
+    margin-right: 10px; /* Add margin to separate bell icon and profile image */
+  }
+  
+  .notification-dot {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 10px;
+    height: 10px;
+    background-color: #ff0000; /* Red color for the dot */
+    border-radius: 50%;
+  }
+  
+  .has-notification .bell-icon {
+    border: 2px solid #ff0000; /* Red border when there is a notification */
+  }
+  
+  .bell {
+    color: rgba(142, 146, 188, 1);
+  }
+  
+  .profile-image-container {
+    width: 50px; /* Set the desired width for the circular profile image container */
+    height: 50px; /* Set the desired height for the circular profile image container */
+    overflow: hidden;
+    border-radius: 50%;
+  }
+  
+  .profile-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+  }
+  
+  .dashboard-section h2{
+    margin: 0 1rem;
+  }
+  
+  
+  .dashboard-view-section{
+    margin: 0.5rem;
+    background-color: #fff;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+  }
+  
+  .channel-heading{
+    background-color: #e5e5e5;
+    padding: 1rem 1rem;
+    font-size: 1rem;
+    align-items: center;
+    justify-content: center;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+  }
+  
+  
+  .table-list {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+    padding: 1rem;
+    padding-top: 0;
+  }
+  
+  .table-list th,
+  .table-list td {
+    border: 1px solid #e5e5e5;
+    padding: 12px;
+    text-align: left;
+    border: 0;
+    margin: 0;
+  }
+  
+  .table-list td{
+    font-size: 0.9rem;
+    font-style: bold;
+    font-weight: 500;
+  }
+  
+  .table-list th {
+    background-color: #f0f0f0;
+    text-align: center;
+    position: relative;
+    
+  }
+  
+  .filterIcon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+  }
+  
+  .filterIcon svg {
+    margin-left: 0.1rem; /* Adjust margin as needed */
+  }
+  
+  .table-list td:nth-child(1) {
+    text-align: center;
+  }
+
+  .table-list th:nth-child(1) {
+    text-align: center;
+  }
+  
+  .table-list td:nth-child(2) {
+    text-align: center;
+  }
+
+  .table-list th:nth-child(2) {
+    text-align: center;
+  }
+  
+  .table-list th:nth-child(3) {
+    text-align: center;
+  }
+  
+  .table-list th:nth-child(4) {
+    text-align: center;
+  }
+  
+  .table-list th:nth-child(5) {
+    text-align: center;
+  }
+  
+  .table-list td:nth-child(3) {
+    font-weight: bold;
+    text-align: center;
+  }
+  
+  /* Green color for Member Join column */
+  .table-list td:nth-child(4) {
+    font-weight: bold;
+    text-align: center;
+  }
+  
+  /* Red color for Member Left column */
+  .table-list td:nth-child(5) {
+    font-weight: bold;
+    text-align: center;
+  }
+  
+  /* Red color for Member Left column */
+  .table-list td:nth-child(6) {
+    text-align: center;
+  }
+  
+  
+  /* Add the following styles to your Dashboard.css file */
+  
+  .agency-dropdown-container {
+    margin: 0; /* Remove margin */
+  }
+  
+  .agency-dropdown {
+    outline: none;
+    padding: 0.25rem 0.5rem; /* Adjust padding as needed */
+    border: 1px solid #000;
+    border-radius: 0.5rem;
+    background-color: #fff;
+    font-size: 1rem;
+    color: #495057;
+    cursor: pointer;
+    position: relative;
+    -webkit-border-radius: 0.5rem;
+    -moz-border-radius: 0.5rem;
+    -ms-border-radius: 0.5rem;
+    -o-border-radius: 0.5rem;
+  }
+  
+  .agency-dropdown-options {
+    max-height: 150px; /* Adjust max-height as needed */
+  }
+  
+  
+  .agency-dropdown::after {
+    content: '▼'; /* Unicode down arrow character */
+    position: absolute;
+    top: 50%;
+    right: 1rem;
+    transform: translateY(-50%);
+    pointer-events: none; /* Ensure the arrow doesn't interfere with clicking */
+  }
+  
+  .agency-dropdown:hover {
+    border-color: #adb5bd;
+  }
+  
+  .agency-dropdown:focus {
+    border-color: #4d90fe;
+    box-shadow: 0 0 0 0.2rem rgba(38, 143, 255, 0.25);
+  }
+  
+  .agency-dropdown-container {
+    position: relative;
+  }
+  
+  .agency-dropdown-options {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    max-height: 200px;
+    overflow-y: auto;
+    border: 1px solid #76b8fa;
+    border-top: none;
+    border-radius: 0 0 0.25rem 0.25rem;
+    background-color: #fff;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+    z-index: 1;
+  }
+  
+  .agency-dropdown-option {
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .agency-dropdown-option:hover {
+    background-color: #f8f9fa;
+  }
+  
+  /* Add this to your Dashboard.css file */
+  
+  .agency-inputs input {
+    flex: 1;
+    padding:8px 8px;
+    outline: none;
+    font-size: 0.9rem;
+    color: #4a5568;
+    width: 55px;
+    border-radius: 7px;
+    -webkit-border-radius: 7px;
+    -moz-border-radius: 7px;
+    -ms-border-radius: 7px;
+    -o-border-radius: 7px;
+  }
+  
+  .agency-inputs span {
+    cursor: pointer;
+    color: #0081F1;
+    transition: color 0.3s ease;
+    padding: 0.5rem;
+    border-radius:5px;
+    -webkit-border-radius:5px;
+    -moz-border-radius:5px;
+    -ms-border-radius:5px;
+    -o-border-radius:5px;
+  }
+  
+  .agency-inputs span:hover {
+    color: #4a5568;
+  }
+  
+  .agency-inputs {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    position: relative; /* Position relative for notification bubble */
+  }
+  
+  .eye-icon {
+    cursor: pointer;
+    color: #0081F1;
+    transition: color 0.3s ease;
+    border: 1px solid #08080880;
+    padding: 0.5rem;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    font-size: 0.8rem; /* Adjust the font-size as needed */
+  }
+  
+  .notification-bubble {
+    position: absolute;
+    top: -8px; /* Adjust as needed for vertical position */
+    right: -8px; /* Adjust as needed for horizontal position */
+    background-color: #319BFF; /* Red color for the bubble */
+    color: #ffffff; /* White text color */
+    border-radius: 50%;
+    padding: 0.1rem 0.4rem;
+    font-size: 0.6rem;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1; /* Ensure the bubble is above other elements */
+  }
+  
+  
+  
+  
+  @media (max-width: 768px) {
+    .table-list-mb {
+      overflow-x: auto;
+    }
+  
+    .table-list th,
+    .table-list td {
+      font-size: 0.8rem; /* Adjust font size for smaller screens */
+    }
+  
+    .channel-heading {
+      overflow-x: auto; /* Enable horizontal scrolling for channel heading */
+      margin-bottom: 0.5rem; /* Add some space below the heading */
+      background: transparent;
+    }
+  
+    .channel-heading h3 {
+      font-size: 1rem; /* Adjust font size for smaller screens */
+    }
+  
+    .range-text{
+      display: none;
+    }
+  
+  
+    .rdrDefinedRangesWrapper{
+      display: none;
+    }
+  }

@@ -1,0 +1,190 @@
+.explore-container {
+    margin: 0; /* Remove margin from all sides */
+  }
+  
+  .explore-header {
+    background-color: #ffffff; /* White background */
+    padding: 1.5rem 1rem; /* Add padding to the header */
+
+  }
+  
+  .explore-header h1 {
+    color: #1a202c; /* Dark text color for the heading */
+  }
+
+  .secondary-div{
+    border-bottom: 1px solid #e5e5e5; /* Light border at the bottom */
+
+  }
+
+  .exploreButton{
+    padding: 0.75rem 1rem;
+    border: 1px solid #F5F5F7;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+    transition: box-shadow 0.3s ease-in-out;
+}
+
+.exploreButton:hover {
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.exploreButton svg{
+  color: #8E92BC
+}
+
+  .exploreButtons{
+    gap: 1rem;
+  }
+
+  .back-button svg{
+    border: 1px solid #000;
+    font-size: 40px;
+    padding: 5px;
+    border-radius: 10px;
+    -webkit-border-radius:;
+    -moz-border-radius:;
+    -ms-border-radius:;
+    -o-border-radius:;
+}
+
+.back-button button {
+  display: flex;
+  align-items: center;
+  transition: transform 0.2s;
+  -webkit-transition: transform 0.2s;
+  -moz-transition: transform 0.2s;
+  -ms-transition: transform 0.2s;
+  -o-transition: transform 0.2s;
+}
+
+.back-button button:hover {
+  transform: scale(1.06);
+  -webkit-transform: scale(1.06);
+  -moz-transform: scale(1.06);
+  -ms-transform: scale(1.06);
+  -o-transform: scale(1.06);
+}
+
+
+.exploreContainer {
+  background-color: #fff;
+  border: 1px solid #e5e5e5;
+  border-radius: 10px;
+  margin: 20px 10px;
+}
+
+.exploreHeading {
+  background-color: #e5e5e5;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  padding: 10px;
+}
+
+.AgencyOptions {
+  display: flex;
+}
+
+.chatLinks p,
+.AgencyOptions p {
+ align-items: center;
+ margin: 0;
+ font-weight: bold;
+}
+
+.channel-heads{
+  color: #b4b4b4;
+  font-weight: 600;
+}
+
+.AgencyOptions h3{
+  margin-top: 2px;
+}
+
+.filterOptions {
+  display: flex;
+  align-items: center;
+}
+
+.filterIcon {
+  display: flex;
+  align-items: center;
+  margin-right: 10px;
+}
+
+.date-range {
+  display: flex;
+  align-items: center;
+}
+
+
+.date-range button:active {
+  transform: translateY(1px);
+}
+
+
+
+/* Add this CSS code to your existing styles */
+
+/* Table styles */
+.channel-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+/* Table header styles */
+.exploreChannels th {
+  background-color: #f8f8f8;
+  padding: 12px;
+  text-align: center;
+  border: none;
+  font-weight: bold;
+}
+
+/* Table cell styles */
+.channel-numbers td {
+  padding: 12px;
+  text-align: center;
+  border: none;
+}
+
+/* Alternating row colors for better readability */
+.channel-numbers:nth-child(even){
+  background-color: #f8f8f8;
+}
+
+.channel-numbers td:nth-child(1){
+  font-weight: bold;
+}
+
+.channel-numbers td:nth-child(2){
+  color: #00C10F;
+  font-weight: 600;
+}
+
+.channel-numbers td:nth-child(3){
+  color: #0081F1;
+  font-weight: 600;
+} 
+
+.channel-numbers td:nth-child(4){
+  color: #F10000;
+  font-weight: 600;
+}
+
+.eye-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  border-radius: 8px;
+  -webkit-border-radius:;
+  -moz-border-radius:;
+  -ms-border-radius:;
+  -o-border-radius:;
+}
+
