@@ -27,60 +27,6 @@
   scroll-behavior: smooth;
 }
 
-#subscriptionType:focus {
-  outline: none;
-  border-color: #40495C;
-  box-shadow: 0 0 0 2px rgba(64, 73, 92, 0.5);
-}
-
-#planType:focus {
-  outline: none;
-  border-color: #40495C;
-  box-shadow: 0 0 0 2px rgba(64, 73, 92, 0.5);
-}
-
-#durationType:focus {
-  outline: none;
-  border-color: #40495C;
-  box-shadow: 0 0 0 2px rgba(64, 73, 92, 0.5);
-}
-
-#default-input:focus {
-  outline: none;
-  border-color: #40495C;
-  box-shadow: 0 0 0 2px rgba(64, 73, 92, 0.5);
-}
-
-#default-input::placeholder {
-  color: white;
-}
-
-#wallet_withdrawal:focus {
-  outline: none;
-  border-color: #40495C;
-  box-shadow: 0 0 0 2px rgba(64, 73, 92, 0.5);
-}
-
-input[type="number"]::-webkit-inner-spin-button,
-input[type="number"]::-webkit-outer-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-}
-
-input[type="number"] {
-    -moz-appearance: textfield;
-}
-
-#des-input:focus {
-  outline: none;
-  border-color: #40495C;
-  box-shadow: 0 0 0 2px rgba(64, 73, 92, 0.5);
-}
-
-#keyPointsType::placeholder {
-  color: white;
-}
-
 .subheading-gradient {
   background: linear-gradient(to bottom right, #ffffff 0%, #757575 100%);
   -webkit-background-clip: text;
@@ -100,14 +46,6 @@ input[type="number"] {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-}
-
-.text-new {
-  background: linear-gradient(135deg, #FFFFFF 0%, #71717A 100%),
-              linear-gradient(0deg, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0));
-  -webkit-background-clip: text;
-  background-clip: text; /* Apply background-clip to the gradient */
-  -webkit-text-fill-color: transparent;
 }
 
 .text-gradient-2 {
@@ -130,67 +68,32 @@ input[type="number"] {
   background: linear-gradient(269.74deg, rgba(255, 255, 255, 0.21) -254.09%, rgba(255, 255, 255, 0) 99.84%);
 }
 
-.bg_cards {
-  background: linear-gradient(119.15deg, rgba(46, 55, 75, 0.5) 98.91%, rgba(41, 47, 60, 0.5) 118.09%);
+.bg_three-dots {
+  background: rgba(51, 51, 51, 1);
 }
 
-.truncate-link {
-  max-width: 150px; /* Adjust the width as needed */
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-@media (min-width: 768px) {
-  .truncate-link {
-    max-width: none;
-    white-space: normal;
-  }
-}
-
-.profile-image_1 {
-  min-width: 60%;
-  /* max-height: 170px;  */
-  object-fit: contain;
+.profile-image {
+  width: 100%;
+  max-height: 100px;
+  object-fit:contain;
   position: relative;
+  z-index: 2;
   mask-image: linear-gradient(rgba(0, 0, 0, 1) 70%, transparent);
 }
 
-.expertise-Bg {
-  background-image: url('./assets/backsideImg.png'), url('./assets/backsideImg.png');
-  background-repeat: no-repeat, no-repeat;
-  background-position: 25rem -20rem, -20rem 75rem;
-  background-size: auto, 45rem;
-}
-
-.background-img-div {
-  background-image: url("./assets/backsideImg.png");
-  background-position: bottom left;
-  background-repeat: no-repeat;
-}
-
-.tab-btn{
-  background-image: linear-gradient(
-    to right,
-    rgba(255, 255, 255, 0),
-    rgba(231, 231, 231, 0.197)
-  )
-}
-.tab-btn:hover {
-  /* Add the hover effect */
-  background-image: linear-gradient(
-    to right,
-    rgba(255, 255, 255, 0),
-    rgba(231, 231, 231, 0.197)
-  );
-}
-.btn-active {
-  /* Add the active button styling */
-  background-image: linear-gradient(
-    to right,
-    rgba(255, 255, 255, 0),
-    rgba(231, 231, 231, 0.197)
-  );
+.background-image {
+  width: 100%;
+  max-height: 200px;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  background: linear-gradient(94.34deg, #ffffff 0%, #9bd0f5 100%),
+    linear-gradient(0deg, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .bg-blue-gradient {
@@ -595,47 +498,28 @@ input[type="number"] {
   margin-left: 10px;
 }
 
-@import url(https://fonts.googleapis.com/css?family=Montserrat);
-
-
-.text {
-  color: #fbae17;
-  display: inline-block;
-  margin-left: 5px;
+.tab-btn{
+  transition: background-image 0.3s ease;
+  -webkit-transition: background-image 0.3s ease;
+  -moz-transition: background-image 0.3s ease;
+  -ms-transition: background-image 0.3s ease;
+  -o-transition: background-image 0.3s ease;
 }
 
-.bounceball {
-  position: relative;
-  display: inline-block;
-  height: 47px;
-  width: 25px; 
-}
-.bounceball:before {
-  position: absolute;
-  content: '';
-  display: block;
-  top: 0;
-  width: 15px; 
-  height: 15px; 
-  border-radius: 50%;
-  background-color: #fbae17;
-  transform-origin: 50%;
-  animation: bounce 500ms alternate infinite ease;
+.tab-btn:hover {
+  /* Add the hover effect */
+  background-image: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0),
+    rgba(231, 231, 231, 0.197)
+  );
 }
 
-@keyframes bounce {
-  0% {
-    top: 30px; 
-    height: 5px;
-    border-radius: 60px 60px 20px 20px;
-    transform: scaleX(2);
-  }
-  35% {
-    height: 15px; 
-    border-radius: 50%;
-    transform: scaleX(1);
-  }
-  100% {
-    top: 0;
-  }
+.btn-active {
+  /* Add the active button styling */
+  background-image: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0),
+    rgba(231, 231, 231, 0.197)
+  );
 }
